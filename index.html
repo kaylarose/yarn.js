@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Yarn.js by kaylarose</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Yarn.js</h1>
+        <p>Stupid-simple JS Sync and Async Worker &quot;Threading&quot;</p>
+        <p class="view"><a href="https://github.com/kaylarose/yarn.js">View the Project on GitHub <small>kaylarose/yarn.js</small></a></p>
+        <ul>
+          <li><a href="https://github.com/kaylarose/yarn.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kaylarose/yarn.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kaylarose/yarn.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>What is yarn.js?</h3>
+
+<p>*This little project spawned from a personal dislike of the <code>[$.deferred API|http://api.jquery.com/category/deferred-object/]</code> syntax. It is meant to be a very very simple no-frills way to spin off worker processes (either synchronous or asynchronous) and then "do something" when they are all finished. </p>
+
+<ul>
+<li>I would recommend looking at <code>$.deferred</code> or similar if you need something more complex.</li>
+</ul><h3>Using yarn.js</h3>
+
+<p>TODO</p>
+
+<h3>Fibers (asynchronous worker "threads")</h3>
+
+<pre><code>var yarn = new Yarn;
+var results = {};
+yarn.fiber(function() {
+  // Do some heavy processing here .. 
+  results.threadA = data;
+  this.yarn.complete();
+});
+yarn.fiber(function() {
+  // Do service queries here ..
+  results.threadB = data;
+  this.yarn.complete();
+});
+yarn.join(function() {
+  // Wait for all processes to complete
+  // and then process the results....
+});
+</code></pre>
+
+<h3>Stacks (synchronous workers)</h3>
+
+<pre><code>// Add some synchronous anonymous workers
+yarn.stack(function() {
+  // Do some processing here .. 
+  this.yarn.complete(firstResult);
+},
+function(firstResult) {
+  // Do some processing here ..
+  this.yarn.complete(secondResult);
+},
+function(secondResult) {
+  // Do some processing here ..
+  this.yarn.complete(lastResult);
+});
+</code></pre>
+
+<h3>Dependencies.</h3>
+
+<p>yarn.js is written in Vanilla JS, there is not 3rd-party libraries required. yarn.js unit tests are written in QUnit (which is bundled with the src).</p>
+
+<h3>Possible Future Enhancements</h3>
+
+<ul>
+<li>Web-worker support</li>
+<li>Nested Fibers</li>
+<li>More consistent Stack vs. Fiber Handling</li>
+<li>Late binding of workers</li>
+<li>
+<code>$.reject</code>-type <code>die()</code> method for quick-exits.</li>
+</ul><h3>Support or Contact</h3>
+
+<p>Having trouble with yarn.js? Feel free to PM or email me (<a href="https://github.com/kaylarose" class="user-mention">@kaylarose</a>). Open to contributions/pull-requests. Not tested in IE - but should be compatible. Willing to patch any IE issues asap.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/kaylarose">kaylarose</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-32118551-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
